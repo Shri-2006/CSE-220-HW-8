@@ -53,9 +53,9 @@ print_done:
 bubble_sort:
 	addi $sp,$sp,-20 #create space on stack for 5 variables
 	sw $ra, 16($sp)#save return address
-	sw $s0,12($sp)#save outer index
-	sw $s1,8($sp) #save inner index
-	sw $s2,4($sp)#save s2
+	sw $s0,12($sp)#save array base address
+	sw $s1,8($sp) #save count of elements
+	sw $s2,4($sp)#save inner loop j index
 	sw $s3, 0($sp) #save s3
 	
 	move $s0,$a0 #make this the base address of array

@@ -128,7 +128,6 @@ square_loop:
 	addi $s1,$s1,1 #increment count
 	j square_loop#repeat
 square_finish:
-	#copied from triangle_finihs
 	lw $ra,8($sp)#get the return address
 	lw $s0, 4($sp) #bring backtotal rows
 	lw $s1,0($sp) #rownum

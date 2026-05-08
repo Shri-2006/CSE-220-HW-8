@@ -121,7 +121,7 @@ inner_loop:
 	sll $t2,$t2,2 #(n*i+c)*4
 	add $t2,$s2,$t2 #t2=address B[i][c]
 	lw $t3,0($t2) #t3=B[i][c]
-	mul $t4,$t1,$t3 #t4 = multiplication of specific elements: tr=A[r][i]*B[i][c]
+	mul $t4,$t1,$t3 #t4=A[r][i]*B[i][c]
 	add $s7,$s7,$t4 #sum+=(A[r][i]*B[i][c])
 	addi $s6,$s6,1 #i++
 	j inner_loop #start loop again until inner loop is done

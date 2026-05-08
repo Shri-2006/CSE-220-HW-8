@@ -15,7 +15,7 @@
 .globl main
 
 main:
-#main func to load addresses for a,b matricies and counter
+#main func to load addresses for a,b arrays and counter
 	la $s0,a #base address of a will be s0, 
 	la $s1, b#s1 for b base address
 	lw $s2, num#s2= num of elements
@@ -25,12 +25,12 @@ get_input:
 	bge $s3,$s2,swap_start #if index>=num then gettign input is done and move onto swap
 	sll $s4,$s3,2 #multiply s3 by 4 and put into s4 to get the next element address through offeset
 	
-	#for matrix a
+	#for array a
 	li $v0,4 #print string
-	la $a0,q_a #print the string questions for matrix a
+	la $a0,q_a #print the string questions for array a
 	syscall
 	li $v0,1
-	addi $a0,$s3,1 #display index for knowing which element of matrix is being inputted
+	addi $a0,$s3,1 #display index for knowing which element of array is being inputted
 	syscall
 	li $v0,4
 	la $a0, q_end #print out the end for the question part ]=
@@ -40,12 +40,12 @@ get_input:
 	add $t0,$s0,$s4 #store address of A[i] at current i
 	sw $v0, 0($t0) #store the value into current A[i]
 	
-	#for matrix b
+	#for array b
 	li $v0,4#print string
-	la $a0,q_b #print the string questions for matrix b
+	la $a0,q_b #print the string questions for array b
 	syscall
 	li $v0,1
-	addi $a0,$s3,1 #display index for knowing which element of matrix is being inputted
+	addi $a0,$s3,1 #display index for knowing which element of array is being inputted
 	syscall
 	li $v0,4
 	la $a0, q_end #print out the end for the question part ]=
@@ -62,8 +62,8 @@ swap_start:
 swap_loop:
 	bge $s3,$s2,print_start #once index (s3) has reached num (s2),it must stop swapping
 	sll $s4,$s3,2 #proper addressing based on index *4
-	add $t0, $s0,$s4 #address for A[i] = old b[i]
-	add $t1, $s1, $s4 #address for B[i]= old A[i]
+	add $t0, $s0,$s4 #compute address for A[i[ now
+	add $t1, $s1, $s4 #compute new address for B[i]
 	
 	lw $t2, 0($t0)#creation of t2=A[i], used for temp
 	lw $t3, 0($t1)#t3=B[i]
@@ -88,8 +88,8 @@ print_loop:
 
 	bge $s3,$s2, system_end #if index>= num then there is nothing more to print
 	sll $s4,$s3,2 #word=4, index*4 for proper address
-	add $t0, $s0,$s4 #address for A[i] = old b[i]
-	add $t1, $s1, $s4 #address for B[i]= old A[i]
+	add $t0, $s0,$s4 #use new A[i] address
+	add $t1, $s1, $s4 # change B[i] address 
 	
 	lw $t2, 0($t0) #load the new A[i]
 	lw $t3,0($t1)#load new B[i]
