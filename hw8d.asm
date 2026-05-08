@@ -96,10 +96,10 @@ multiply:
 	sw $s6, 4($sp) #i for inner loop to stack
 	sw $s7, 0($sp) #save the sum to stack 
 	
-	move $s0,$a0 #set a0 to n
-	move $s1,$a1 #set a1 to address of A
-	move $s2,$a2 #set a2 to address of B
-	move $s3,$a3 #set a3 to adress of C
+	move $s0,$a0 #set n from a0 to s0
+	move $s1,$a1 #set s1 to address of A from a1
+	move $s2,$a2 #set s2 to address of B from a2
+	move $s3,$a3 #set s3 to adress of C from a3
 	li $s4,0 #set the r to 0 for the loop
 row_loop:
 	bge $s4,$s0, mult_done #when r>=n then it should stop loop
