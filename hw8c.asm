@@ -44,7 +44,7 @@ print_loop:
 	syscall
 	
 	addi $s2,$s2,1 #increment i
-	j print_loop
+	j print_loop #jump back to start of print_loop
 print_done:
 	li $v0,10#exit system once printing is done
 	syscall
@@ -53,8 +53,8 @@ print_done:
 bubble_sort:
 	addi $sp,$sp,-20 #create space on stack for 5 variables
 	sw $ra, 16($sp)#save return address
-	sw $s0,12($sp)#save s0
-	sw $s1,8($sp) #save s1
+	sw $s0,12($sp)#save outer index
+	sw $s1,8($sp) #save inner index
 	sw $s2,4($sp)#save s2
 	sw $s3, 0($sp) #save s3
 	

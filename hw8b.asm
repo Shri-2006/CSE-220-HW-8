@@ -26,7 +26,7 @@ get_input:
 	sll $s4,$s3,2 #multiply s3 by 4 and put into s4 to get the next element address through offeset
 	
 	#for matrix a
-	li $v0,4
+	li $v0,4 #print string
 	la $a0,q_a #print the string questions for matrix a
 	syscall
 	li $v0,1
@@ -41,7 +41,7 @@ get_input:
 	sw $v0, 0($t0) #store the value into current A[i]
 	
 	#for matrix b
-	li $v0,4
+	li $v0,4#print string
 	la $a0,q_b #print the string questions for matrix b
 	syscall
 	li $v0,1
@@ -78,7 +78,7 @@ swap_loop:
 print_start:
 	li $s3,0 #start loop index at 0
 	#start with a new line before printing to keep out of the q_a and q_b area
-	li $v0,4
+	li $v0,4 #v0=4 means print string
 	la $a0, nextLine 
 	syscall
 	
@@ -100,16 +100,16 @@ print_loop:
 	move $a0, $t2  #copy into a0 the A[i]
 	syscall
 	#print space
-	li $v0,4
-	la $a0,space
+	li $v0,4 #tells to print string
+	la $a0,space #string to print is space
 	syscall
 	#print B[i]
-	li $v0,1
+	li $v0,1 #v0=1 means print int
 	move $a0,$t3 #copy into a0 but for B
 	syscall
 	
 	#print a separatar bar as according to instructions
-	li $v0,4
+	li $v0,4 #v0=4 mean print string
 	la $a0, separator #this string points to | in .data
 	syscall
 	
@@ -119,7 +119,7 @@ print_loop:
 	
 system_end:
 	#end system since its done
-	li $v0,10
+	li $v0,10 #v0=10 mean system exit
 	syscall
 		
 	

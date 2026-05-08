@@ -20,7 +20,7 @@ main:
 	syscall
 	move $s0,$v0 #save type of shape into s0 for a temp variable
 	#start a new line before getting the amount of levels
-	li $v0,4
+	li $v0,4 #print string
 	la $a0, nL #print \n 
 	syscall
 	
@@ -34,10 +34,10 @@ main:
 	move $s1, $v0 #store in temp
 	#separate with 2 new line to make it easier to see
 	li $v0,4
-	la $a0,nL
+	la $a0,nL #print new line
 	syscall
 	li $v0,4
-	la $a0,nL
+	la $a0,nL#print second new line 
 	syscall
 	
 	#if else statements 
@@ -95,7 +95,7 @@ d_triangle:
 	sw $ra,8($sp)#ra saved
 	sw $s0,4($sp)#save row amount
 	sw $s1, 0($sp) #savecurrent row
-	move $s0,$a0 #push to a0 the total row
+	move $s0,$a0 #push to s0 the row (a0)
 	li $s1,1 #start rows at 1
 	
 triangle_loop:

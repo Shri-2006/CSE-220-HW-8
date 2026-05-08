@@ -49,7 +49,7 @@
 	
 	
 print_rows:
-	bge $s4,$s3, end_system
+	bge $s4,$s3, end_system #if s4>=s3 go to end_system
 	li $s5,0 #col index (c)=s5
 	
 print_column:
